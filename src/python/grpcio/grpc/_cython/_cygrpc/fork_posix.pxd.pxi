@@ -15,15 +15,15 @@
 
 cdef extern from "pthread.h" nogil:
     int pthread_atfork(
-        void (*prepare)() nogil,
-        void (*parent)() nogil,
-        void (*child)() nogil)
+        void (*prepare)() noexcept nogil,
+        void (*parent)() noexcept nogil,
+        void (*child)() noexcept nogil) noexcept
 
 
-cdef void __prefork() nogil
+cdef void __prefork() noexcept nogil
 
 
-cdef void __postfork_parent() nogil
+cdef void __postfork_parent() noexcept nogil
 
 
-cdef void __postfork_child() nogil
+cdef void __postfork_child() noexcept nogil
